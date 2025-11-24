@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function calculateSize() {
-    // elementos
+    // Pegar elementos
     const height = document.getElementById('height');
     const weight = document.getElementById('weight');
     const waist = document.getElementById('waist');
     const arm = document.getElementById('arm');
     const calculateBtn = document.getElementById('calculateBtn');
     
-    // valores
+    // Pegar valores
     const heightValue = parseFloat(height.value);
     const weightValue = parseFloat(weight.value);
     const waistValue = parseFloat(waist.value);
@@ -49,6 +49,9 @@ function calculateSize() {
         
         // Mostrar resultado
         displayResult(result);
+        
+        // MUDANÇA AQUI: Alterar texto do botão após o resultado
+        calculateBtn.innerHTML = 'CALCULAR NOVAMENTE';
         
         // Esconder loading
         showLoading(false);
@@ -134,7 +137,7 @@ function calculateClothingSize(height, weight, waist, arm) {
     } else if (score >= 40) {
         size = 'GG';
         details = 'Silhueta poderosa e volumosa';
-        recommendation = 'Nosso GG Oferece conforto total sem limitar os movimentos.';
+        recommendation = 'Nosso GG é desenvolvido para atletas. Oferece conforto total sem limitar os movimentos.';
     } else {
         size = 'XG';
         details = 'Estrutura robusta e imponente';
@@ -155,6 +158,9 @@ function displayResult(result) {
     const sizeResult = document.getElementById('sizeResult');
     const sizeDetails = document.getElementById('sizeDetails');
     const recommendation = document.getElementById('recommendation');
+    
+    // MUDANÇA AQUI: Alterar o título para "A Onna Vibe indica:"
+    document.querySelector('#result h3').textContent = 'A ONNA VIBe INDICA:';
     
     // Atualizar conteúdo
     sizeResult.textContent = result.size;
@@ -178,7 +184,8 @@ function showLoading(show) {
         calculateBtn.innerHTML = '<div class="loading"></div> CALCULANDO...';
         calculateBtn.disabled = true;
     } else {
-        calculateBtn.innerHTML = 'DESCUBRA SEU TAMANHO';
+        // MUDANÇA AQUI: Botão muda para "CALCULAR NOVAMENTE" após o resultado
+        calculateBtn.innerHTML = 'CALCULAR NOVAMENTE';
         calculateBtn.disabled = false;
     }
 }
@@ -190,4 +197,7 @@ function resetForm() {
     document.getElementById('waist').value = '';
     document.getElementById('arm').value = '';
     document.getElementById('result').style.display = 'none';
+    
+    // MUDANÇA AQUI: Voltar texto original do botão se resetar
+    document.getElementById('calculateBtn').innerHTML = 'DESCUBRA SEU TAMANHO';
 }
