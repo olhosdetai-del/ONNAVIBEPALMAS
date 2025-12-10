@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo-produto">Detalhes do Produto</title>
+    <link rel="stylesheet" href="css/catalogo.css">
+</head>
+<body>
+    <header>
+        <a href="catalogo.html">← Voltar ao Catálogo</a>
+    </header>
+
+    <main id="detalhes-produto" class="detalhe-container">
+        <section id="carrinho-secao">
+            <h2>Seu Pedido</h2>
+            <ul id="lista-carrinho">
+                </ul>
+            <p>Total: <span id="carrinho-total">R$ 0,00</span></p>
+            <button id="finalizar-compra" onclick="gerarPedidoWhatsApp()">
+                Finalizar Pedido (WhatsApp)
+            </button>
+        </section>
+        
+    </main>
+
+    <script src="produtos.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+</html>

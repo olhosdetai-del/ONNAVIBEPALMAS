@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Estilo do Catálogo (index.html) */
+.catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.produto-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+}
+
+.produto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.preco {
+    color: #87232d;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2ecc71;
+}
+
+/* Estilo da Página de Detalhes (detalhe.html) */
+.detalhe-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detalhe-produto-info {
+    flex: 2;
+    /* Ocupa mais espaço */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.detalhe-produto-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.preco-grande {
+    color: #c0392b;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+}
+
+#carrinho-secao {
+    flex: 1;
+    /* Ocupa a lateral */
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    /* Se ajusta ao conteúdo */
+}
+
+#lista-carrinho {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-carrinho li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #bdc3c7;
+    display: flex;
+    justify-content: space-between;
+}
+
+#carrinho-total {
+    font-size: 1.3em;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+}
+
+#finalizar-compra {
+    background-color: #075E54;
+    /* Cor do WhatsApp */
+    margin-top: 15px;
+}
+
+#finalizar-compra:hover {
+    background-color: #128C7E;
+}

@@ -6,40 +6,63 @@
     <title>ONNA VIBe - Calculadora de Tamanhos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <img class="logo" src="img/logo.jpeg" alt="Imagem da logo OnnaVibe">
-            <div class="texto1">Descubra seu tamanho </div>
+            <img class="logo" src="img/logo.jpeg" alt="Logo OnnaVibe">
+            <div class="texto1">Descubra seu tamanho</div>
         </div>
 
         <div class="calculator-form">
+            <!-- Dados Pessoais -->
             <div class="form-group">
-                <label for="height">Altura (cm):</label>
-                <input type="number" id="height" placeholder="Ex: 165" min="100" max="220">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" placeholder="Ex: Maria Silva" maxlength="100">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone/WhatsApp:</label>
+                <input type="tel" id="telefone" placeholder="Ex: (11) 99999-9999">
             </div>
 
             <div class="form-group">
-                <label for="weight">Peso (kg):</label>
-                <input type="number" id="weight" placeholder="Ex: 65" min="30" max="150">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" placeholder="Ex: nome@email.com">
             </div>
 
-            <div class="form-group">
-                <label for="waist">Cintura (cm):</label>
-                <input type="number" id="waist" placeholder="Ex: 75" min="50" max="120">
+            <!-- Medidas Corporais -->
+            <div class="form-section">
+                <h3>Medidas Corporais</h3>
+                
+                <div class="form-group">
+                    <label for="altura">Altura (cm):</label>
+                    <input type="number" id="altura" placeholder="Ex: 165" min="100" max="220" step="0.5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" placeholder="Ex: 65" min="30" max="150" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cintura">Cintura (cm):</label>
+                    <input type="number" id="cintura" placeholder="Ex: 70" min="50" max="120" step="0.5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="braco">Braço (cm):</label>
+                    <input type="number" id="braco" placeholder="Ex: 28" min="15" max="50" step="0.5">
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="arm">Braço (cm):</label>
-                <input type="number" id="arm" placeholder="Ex: 28" min="15" max="50">
-            </div>
-
+            <!-- Botão de Envio -->
             <button class="calculate-btn" id="calculateBtn">
                 Veja sua indicação ONNA VIBE
             </button>
 
             <div class="result" id="result">
-                <h3>A ONNA VIBE indica:</h3>
+                <h3>A ONNA VIBe INDICA:</h3>
                 <div class="size-result" id="sizeResult">--</div>
                 <div class="size-details" id="sizeDetails"></div>
                 <div class="recommendation" id="recommendation"></div>
