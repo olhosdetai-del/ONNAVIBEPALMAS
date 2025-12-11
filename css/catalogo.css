@@ -8,7 +8,7 @@ body {
 h1 {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #980e0e;
     color: white;
     margin-bottom: 0;
 }
@@ -27,7 +27,7 @@ h1 {
     background-color: white;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #980e0e(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
 }
@@ -52,7 +52,7 @@ h1 {
 }
 
 button {
-    background-color: #27ae60;
+    background-color: #c1bcbc;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -64,7 +64,7 @@ button {
 }
 
 button:hover {
-    background-color: #2ecc71;
+    background-color: #d06363;
 }
 
 /* Estilo da Página de Detalhes (detalhe.html) */

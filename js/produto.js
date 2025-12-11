@@ -10,8 +10,8 @@ const produtos = [
         id: 2,
         nome: "Fone Bluetooth P9",
         preco: 129.50,
-        descricao: "Fone de ouvido sem fio, cancelamento de ruído ativo e som de alta fidelidade. Ideal para exercícios.",
-        imagem: "caminho/para/fone.jpg" // Troque pelo caminho real
+        descricao: "Conjunto confortavel  de alça facilitando a mobilidade ",
+        Image: "img/para/conjunto alça frente.jpeg"
     },
     {
         id: 3,
