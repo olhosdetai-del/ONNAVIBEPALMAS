@@ -169,6 +169,35 @@ input::placeholder {
     border-top-color: transparent;
     animation: spin 1s ease-in-out infinite;
 }
+.card-produto {
+    width: 16rem;
+    height: 20rem;
+    text-align: center;
+    margin: 3rem;
+}
+
+.card-produto img {
+    width: 16rem;
+    height: 20rem;
+    border-radius: 25px;
+    background: #f6f6f6;
+}
+
+.card-produto .preco {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: white;
+    border: 2px solid #b30000;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.containerCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 @keyframes spin {
     to {
