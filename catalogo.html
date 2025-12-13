@@ -6,10 +6,48 @@
     <title>ONNA VIBe - Catálogo de Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .catalog-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .catalog-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .produto-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .produto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .produto-card img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .filter-btn.active {
+            background-color: #212529;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Header IGUAL ao da home -->
+    <!-- Header com navegação -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
@@ -67,16 +105,170 @@
 
         <!-- Produtos serão carregados aqui -->
         <div class="row" id="produtosContainer">
+            <!-- JavaScript vai preencher aqui -->
         </div>
     </div>
 
     <footer class="bg-dark text-white text-center py-4 mt-5">
         <p>© Todos os direitos reservados para ONNA VIBe</p>
+        <div class="mt-2">
+            <a href="https://wa.me/5563999999999" class="text-white me-3">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://instagram.com/onnavibe" class="text-white">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+        </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/produto.js"></script>
-    <script src="js/principal.js"></script>
+    <script src="js/produtos-data.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Script para carregar produtos -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Dados dos produtos (versão simplificada para teste)
+        const produtosCatalogo = [
+            {
+                id: 1,
+                nome: "Conjunto Alça Fitness",
+                preco: 130.00,
+                categoria: "conjuntos",
+                descricao: "Conjunto fitness com top alça e legging de alta compressão.",
+                imagem: "img/conjunto alça frente.jpeg"
+            },
+            {
+                id: 2,
+                nome: "Conjunto Branco Premium",
+                preco: 130.00,
+                categoria: "conjuntos",
+                descricao: "Conjunto branco com design moderno e sustentação reforçada.",
+                imagem: "img/conjunto branco frente.jpeg"
+            },
+            {
+                id: 3,
+                nome: "Conjunto Manga Longa",
+                preco: 145.00,
+                categoria: "conjuntos",
+                descricao: "Perfeito para treinos em ambientes frios com tecido térmico.",
+                imagem: "img/conjunto manga cumprida frente.jpeg"
+            },
+            {
+                id: 4,
+                nome: "Conjunto Nadador",
+                preco: 130.00,
+                categoria: "conjuntos",
+                descricao: "Conjunto estilo nadador ideal para natação e treinos funcionais.",
+                imagem: "img/conjunto nadador frente.jpeg"
+            },
+            {
+                id: 5,
+                nome: "Macacão Marrom",
+                preco: 130.00,
+                categoria: "conjuntos",
+                descricao: "Macacão fitness em tecido suplex com modelagem única.",
+                imagem: "img/MAQUAUINHO MARRON.jpeg"
+            },
+            {
+                id: 6,
+                nome: "Conjunto Saia Esportiva",
+                preco: 140.00,
+                categoria: "conjuntos",
+                descricao: "Conjunto com saia shorts para maior liberdade de movimento.",
+                imagem: "img/conjunto saia.jpeg"
+            },
+            {
+                id: 7,
+                nome: "Conjunto Celeste",
+                preco: 130.00,
+                categoria: "conjuntos",
+                descricao: "Conjunto na cor celeste com detalhes em contraste.",
+                imagem: "img/conjunto seleste frente.jpeg"
+            },
+            {
+                id: 8,
+                nome: "Legging Power Black",
+                preco: 89.90,
+                categoria: "leggings",
+                descricao: "Legging preta de alta compressão com tecnologia anti-transpirante.",
+                imagem: "img/fotoCard.png"
+            }
+        ];
+        
+        const container = document.getElementById('produtosContainer');
+        const filtroBtns = document.querySelectorAll('.filter-btn');
+        
+        // Carregar todos os produtos inicialmente
+        carregarProdutos('todos');
+        
+        // Adicionar eventos aos filtros
+        filtroBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remover active de todos
+                filtroBtns.forEach(b => b.classList.remove('active'));
+                // Adicionar active no clicado
+                this.classList.add('active');
+                // Filtrar produtos
+                const categoria = this.getAttribute('data-filter');
+                carregarProdutos(categoria);
+            });
+        });
+        
+        // Função para carregar produtos
+        function carregarProdutos(categoria) {
+            let produtosFiltrados;
+            
+            if (categoria === 'todos') {
+                produtosFiltrados = produtosCatalogo;
+            } else {
+                produtosFiltrados = produtosCatalogo.filter(p => p.categoria === categoria);
+            }
+            
+            // Limpar container
+            container.innerHTML = '';
+            
+            // Se não houver produtos
+            if (produtosFiltrados.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-muted">Nenhum produto encontrado nesta categoria</h4>
+                        <a href="catalogo.html" class="btn btn-dark mt-3">Ver todos os produtos</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Criar cards para cada produto
+            produtosFiltrados.forEach(produto => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4 col-lg-3 mb-4';
+                col.innerHTML = `
+                    <div class="card produto-card h-100">
+                        <img src="${produto.imagem}" 
+                             class="card-img-top" 
+                             alt="${produto.nome}" 
+                             onerror="this.src='https://via.placeholder.com/300x400?text=Imagem+Não+Disponível'">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${produto.nome}</h5>
+                            <p class="card-text text-muted" style="font-size: 0.9em; flex-grow: 1;">
+                                ${produto.descricao}
+                            </p>
+                            <div class="mt-auto">
+                                <p class="h4 text-danger mb-3">R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
+                                <a href="produto.html?id=${produto.id}" 
+                                   class="btn btn-dark w-100">
+                                   Ver Detalhes
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+    });
+    </script>
 </body>
 </html>
