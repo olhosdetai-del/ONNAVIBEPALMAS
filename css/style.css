@@ -19,7 +19,23 @@ body {
 }
 
 .navbar-dark.bg-dark {
-    background-color: #212529 !important;
+    background-color: #262729 !important;
+    color: white !important;
+    font-size: medium !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    background-color: #980e0e !important;
+    border-radius: 5px;
+}
+
+/* Página ativa */
+.navbar-nav .nav-link.active {
+    color: white !important;
+    font-weight: bold !important;
+    background-color: #7a0f2c !important;
+    border-radius: 5px;
 }
 
 /* ========== HERO SECTION ========== */
@@ -60,6 +76,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     height: 100%;
+    color: #980e0e;
 }
 
 .produto-card:hover {
@@ -84,6 +101,7 @@ body {
     overflow: hidden;
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #980e0e;
 }
 
 .card-produto img {
@@ -115,7 +133,7 @@ body {
 
 /* ========== CARROSSEL ========== */
 .carousel-img {
-    height: 500px;
+    height: 600px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -171,6 +189,7 @@ body {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #980e0e;
 }
 
 /* ========== CALCULADORA DE MEDIDAS ========== */
@@ -325,6 +344,30 @@ body {
     transform-origin: center center;
     z-index: 100;
     position: relative;
+}
+
+/* TESTE RÁPIDO - copie e cole no final do seu style.css */
+
+.navbar-nav .nav-link {
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+
+/* HOVER: mouse em cima */
+.navbar-nav .nav-link:hover {
+    background-color: #980e0e !important;
+    color: white !important;
+    transform: scale(1.05);
+}
+
+/* ACTIVE: página atual */
+.navbar-nav .nav-link.active {
+    background-color: #7a0f2c !important;
+    color: white !important;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* ========== RESPONSIVIDADE ========== */
