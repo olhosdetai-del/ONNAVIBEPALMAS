@@ -1,30 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="titulo-produto">Detalhes do Produto</title>
-    <link rel="stylesheet" href="css/catalogo.css">
+    <title>ONNA VIBe - Detalhes do Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <!-- Header IGUAL -->
     <header>
-        <a href="catalogo.html">← Voltar ao Catálogo</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img src="img/logo.jpeg" alt="ONNA VIBe" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="medidas.html">CALCULAR MEDIDAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalogo.html">PRODUTOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contato.html">CONTATO</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-light" id="cartBtn">
+                            🛒 Carrinho (<span id="cartCount">0</span>)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main id="detalhes-produto" class="detalhe-container">
-        <section id="carrinho-secao">
-            <h2>Seu Pedido</h2>
-            <ul id="lista-carrinho">
-                </ul>
-            <p>Total: <span id="carrinho-total">R$ 0,00</span></p>
-            <button id="finalizar-compra" onclick="gerarPedidoWhatsApp()">
-                Finalizar Pedido (WhatsApp)
-            </button>
-        </section>
-        
-    </main>
+    <!-- Conteúdo do Produto (será preenchido pelo JavaScript) -->
+    <div class="container my-5" id="produtoDetalhe">
+        <div class="row">
+           <div class="col-md-6">
+    <div class="image-zoom-container">
+        <img id="produtoImagem" src="" class="img-fluid rounded zoom-image" alt="Produto">
+        <div class="zoom-lens"></div>
+    </div>
+    <div class="image-zoom-result"></div>
+    <small class="text-muted mt-2 d-block">Passe o mouse na imagem para dar zoom</small>
+</div>
+            <div class="col-md-6">
+                <h1 id="produtoNome">Carregando...</h1>
+                <p id="produtoDescricao" class="lead"></p>
+                <h3 class="text-danger" id="produtoPreco">R$ 0,00</h3>
+                
+                <!-- Tamanhos -->
+                <div class="mb-3">
+                    <label class="form-label">Tamanho:</label>
+                    <select class="form-select" id="tamanhoSelect" style="max-width: 200px;">
+                        <option value="P">P</option>
+                        <option value="M" selected>M</option>
+                        <option value="G">G</option>
+                        <option value="GG">GG</option>
+                    </select>
+                </div>
+                
+                <!-- Quantidade -->
+                <div class="mb-3">
+                    <label class="form-label">Quantidade:</label>
+                    <input type="number" id="quantidade" class="form-control" value="1" min="1" style="max-width: 100px;">
+                </div>
+                
+                <!-- Botões -->
+                <button class="btn btn-dark btn-lg me-2" id="btnAdicionarCarrinho">
+                    <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                </button>
+                <button class="btn btn-outline-dark btn-lg" id="btnComprarAgora">
+                    <i class="bi bi-bag-check"></i> Comprar Agora
+                </button>
+                
+                <!-- Voltar -->
+                <div class="mt-4">
+                    <a href="catalogo.html" class="text-decoration-none">
+                        ← Voltar para o catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="produtos.js"></script>
-    <script src="carrinho.js"></script>
+    <footer class="bg-dark text-white text-center py-4">
+        <p>© Todos os direitos reservados para ONNA VIBe</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/produtos-data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

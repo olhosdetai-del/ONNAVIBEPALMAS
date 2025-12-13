@@ -1,18 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <link rel="stylesheet" href="css/catalogo.css">
+    <title>ONNA VIBe - Catálogo de Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1> Produtos OnnaVibe</h1>
-    
-    <main id="lista-produtos" class="catalogo-grid">
-        </main>
 
-    <script src="produtos.js"></script>
-    <script src="script.js"></script>
+<body>
+    <!-- Header IGUAL ao da home -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">
+                    <img src="img/logo.jpeg" alt="ONNA VIBe" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="medidas.html">CALCULAR MEDIDAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="catalogo.html">PRODUTOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contato.html">CONTATO</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-light" id="cartBtn">
+                            🛒 Carrinho (<span id="cartCount">0</span>)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Banner do Catálogo -->
+    <div class="catalog-banner">
+        <div class="container">
+            <h1>Nossa Coleção</h1>
+            <p>Roupas fitness de alta performance para cada momento do seu treino</p>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-dark filter-btn active" data-filter="todos">Todos</button>
+                    <button type="button" class="btn btn-outline-dark filter-btn" data-filter="conjuntos">Conjuntos</button>
+                    <button type="button" class="btn btn-outline-dark filter-btn" data-filter="leggings">Leggings</button>
+                    <button type="button" class="btn btn-outline-dark filter-btn" data-filter="tops">Tops</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produtos serão carregados aqui -->
+        <div class="row" id="produtosContainer">
+            <div class="col-md-6">
+    <div class="image-zoom-container">
+        <img id="produtoImagem" src="" class="img-fluid rounded zoom-image" alt="Produto">
+        <div class="zoom-lens"></div>
+    </div>
+    <div class="image-zoom-result"></div>
+    <small class="text-muted mt-2 d-block">Passe o mouse na imagem para dar zoom</small>
+</div>
+            <!-- JavaScript vai preencher aqui -->
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>© Todos os direitos reservados para ONNA VIBe</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/produto.js"></script>
+    <script src="js/principal.js"></script>
 </body>
 </html>

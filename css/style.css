@@ -1,367 +1,174 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ESTILOS GERAIS */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: #980e0e;
-    min-height: 100vh;
-    padding: 20px;
+/* HEADER */
+.navbar-brand img {
+    border-radius: 5px;
+}
+
+/* HERO SECTION */
+.hero-section {
+    background: linear-gradient(#980e0e(0, 0, 0, 0.5), #980e0e(0, 0, 0, 0.5)), var(--bg-image);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.container {
-    max-width: 500px;
-    width: 100%;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}
-
-.logo {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 15px;
-    border-radius: 8px;
-}
-
-.header {
-    background: #e1dfdf;
-    color: rgb(122, 15, 44);
-    padding: 30px 20px;
     text-align: center;
+    color: white;
 }
 
-
-.texto1 {
-    font-size: 1.4em;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+/* CATÁLOGO */
+.catalog-banner {
+    background: linear-gradient(135deg, #ea6675 0%, #980e0e 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.calculator-form {
-    padding: 30px;
-}
-
-.form-group {
+.catalog-banner h1 {
+    font-size: 3rem;
     margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-    font-size: 14px;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
+/* CARDS DE PRODUTO */
+.produto-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #dee2e6;
     border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    background: #fafafa;
+    overflow: hidden;
 }
 
-input:focus {
-    outline: none;
-    border-color: #667eea;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+.produto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-input::placeholder {
-    color: #999;
+.card-img-top {
+    object-fit: cover;
 }
 
-.calculate-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #bc1240, #7e082e);
+/* CARROSSEL */
+.carousel-img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* BOTÕES */
+.btn-dark {
+    background-color: #212529;
+    border-color: #212529;
+}
+
+.btn-dark:hover {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+/* FILTROS */
+.filter-btn.active {
+    background-color: #212529;
     color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.calculate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(234, 102, 128, 0.4);
+/* PÁGINA DE DETALHES */
+#produtoImagem {
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
 }
 
-.calculate-btn:active {
-    transform: translateY(0);
-}
-
-.result {
-    margin-top: 25px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    text-align: center;
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.result h3 {
-    color: #a24848;
-    margin-bottom: 15px;
-    font-size: 1.1em;
-}
-
-.size-result {
-    font-size: 3em;
-    font-weight: bold;
-    color: #980e0e;
-    margin: 10px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.size-details {
-    color: #980e0e;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.recommendation {
-    margin-top: 15px;
-    padding: 15px;
-    background: #a4a5a7;
-    border-radius: 8px;
-    border-left: 4px solid #6e6e6f;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-/* Loading animation */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        border-radius: 15px;
-    }
-
-    .brand-name {
-        font-size: 2em;
-    }
-
-    .brand-subtitle {
-        font-size: 1em;
-    }
-
-    .calculator-form {
-        padding: 20px;
-    }
-
-    .size-result {
-        font-size: 2.5em;
-    }
-}
-
-@media (max-width: 400px) {
-    .brand-name {
-        font-size: 1.8em;
-    }
-
-    .calculator-form {
-        padding: 15px;
-    }
-}
-
-.form-section {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
-    border-left: 4px solid #ff6b8b;
-}
-
-.form-section h3 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-/* === RESPONSIVIDADE COMPLETA === */
-
-/* Tablets (768px - 1024px) */
-@media (max-width: 1024px) {
-    .container {
-        max-width: 90%;
-    }
-}
-
-/* Tablets Pequenos (600px - 768px) */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
-    body {
-        padding: 15px;
+    .carousel-img {
+        height: 300px;
     }
 
-    .container {
-        border-radius: 15px;
+    .catalog-banner h1 {
+        font-size: 2rem;
     }
 
-    .header {
-        padding: 20px 15px;
-    }
-
-    .logo {
-        max-width: 100px;
-    }
-
-    .brand-name {
-        font-size: 1.8em;
-    }
-
-    .brand-subtitle {
-        font-size: 0.9em;
-    }
-
-    .calculator-form {
-        padding: 25px;
-    }
-}
-
-/* Celulares Grandes (480px - 600px) */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .header {
-        padding: 15px 10px;
-    }
-
-    .logo {
-        max-width: 80px;
-    }
-
-    .brand-name {
-        font-size: 1.6em;
-        letter-spacing: 2px;
-    }
-
-    .brand-subtitle {
-        font-size: 0.8em;
-        letter-spacing: 1px;
-    }
-
-    .calculator-form {
+    .hero-section {
+        height: 200px;
         padding: 20px;
     }
 
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    input {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .calculate-btn {
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    .size-result {
-        font-size: 2.5em;
+    .hero-section h1 {
+        font-size: 1.5rem;
     }
 }
 
-/* Celulares Pequenos (até 480px) */
-@media (max-width: 480px) {
-    body {
-        padding: 5px;
+/* ZOOM NA IMAGEM */
+.image-zoom-container {
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+    border-radius: 10px;
+}
+
+.zoom-image {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+}
+
+.zoom-image:hover {
+    transform: scale(1.05);
+}
+
+/* Lente de zoom (opcional) */
+.zoom-lens {
+    position: absolute;
+    border: 2px solid #980e0e;
+    width: 100px;
+    height: 100px;
+    display: none;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Resultado do zoom (opcional) */
+.image-zoom-result {
+    position: absolute;
+    top: 0;
+    right: -105%;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    background-repeat: no-repeat;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Versão simplificada (recomendada para iniciantes) */
+.simple-zoom {
+    transition: transform 0.5s ease;
+    cursor: zoom-in;
+}
+
+.simple-zoom:hover {
+    transform: scale(1.8);
+    transform-origin: center center;
+    z-index: 100;
+    position: relative;
+}
+
+/* Para mobile: toque para zoom */
+@media (max-width: 768px) {
+    .image-zoom-container {
+        cursor: pointer;
     }
 
-    .container {
-        border-radius: 10px;
-    }
-
-    .header {
-        padding: 15px 10px;
-    }
-
-    .logo {
-        max-width: 60px;
-    }
-
-    .brand-name {
-        font-size: 1.4em;
-        letter-spacing: 1px;
-    }
-
-    .brand-subtitle {
-        font-size: 0.7em;
-    }
-
-    .calculator-form {
-        padding: 15px;
-    }
-
-    input {
-        padding: 8px;
-        font-size: 13px;
-    }
-
-    .calculate-btn {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .size-result {
-        font-size: 2em;
-    }
-
-    .recommendation {
-        padding: 10px;
-        font-size: 12px;
+    .zoom-image:active {
+        transform: scale(2);
+        transition: transform 0.3s ease;
     }
 }
