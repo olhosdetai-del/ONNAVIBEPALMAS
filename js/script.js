@@ -232,3 +232,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Carregar dados salvos quando a página abrir
 window.onload = loadSavedData;
+// modificação nova: 

@@ -105,3 +105,76 @@ function getProdutosPorCategoria(categoria) {
 function getProdutosDestaque() {
     return produtos.filter(produto => produto.destaque);
 }
+// Dentro do script do produto.html, na parte que configura o botão "Adicionar ao Carrinho"
+document.getElementById('btnAdicionarCarrinho').addEventListener('click', function() {
+    // 1. Pegar os valores selecionados CORRETAMENTE
+    let corSelecionada = 'Não especificada';
+    const corBtnSelecionado = document.querySelector('#coresContainer .btn-dark');
+    if (corBtnSelecionado) {
+        corSelecionada = corBtnSelecionado.textContent;
+    } else if (produto.cores && produto.cores.length > 0) {
+        corSelecionada = produto.cores[0]; // Usa a primeira cor disponível
+    }
+    
+    const tamanho = document.getElementById('tamanhoSelect').value;
+    const quantidade = parseInt(document.getElementById('quantidade').value) || 1;
+    
+    // 2. Criar objeto itemCarrinho CORRETO
+    const itemCarrinho = {
+        id: produto.id,
+        nome: produto.nome,
+        preco: produto.preco,
+        imagem: produto.imagem,
+        cor: corSelecionada,
+        tamanho: tamanho,
+        quantidade: quantidade
+    };
+    
+    console.log('Item sendo adicionado:', itemCarrinho); // Para debug
+    
+    // 3. Verificar se temos as funções disponíveis
+    if (typeof adicionarAoCarrinho === 'function') {
+        // Chamar função global
+        adicionarAoCarrinho(itemCarrinho);
+    } else {
+        // Fallback - adicionar diretamente ao localStorage
+        let carrinho = JSON.parse(localStorage.getItem('carrinhoOnnaVibe')) || [];
+        
+        // Verificar se item já existe
+        const index = carrinho.findIndex(item => 
+            item.id === itemCarrinho.id && 
+            item.tamanho === itemCarrinho.tamanho && 
+            item.cor === itemCarrinho.cor
+        );
+        
+        if (index !== -1) {
+            carrinho[index].quantidade += itemCarrinho.quantidade;
+        } else {
+            carrinho.push(itemCarrinho);
+        }
+        
+        localStorage.setItem('carrinhoOnnaVibe', JSON.stringify(carrinho));
+        
+        // Atualizar contador
+        const cartCount = document.getElementById('cartCount');
+        if (cartCount) {
+            const total = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
+            cartCount.textContent = total;
+        }
+        
+        // Mostrar notificação
+        const notificacao = document.createElement('div');
+        notificacao.innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show position-fixed" 
+                 style="bottom: 20px; right: 20px; z-index: 1050; min-width: 300px;">
+                ✅ ${produto.nome} adicionado ao carrinho!
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+        document.body.appendChild(notificacao);
+        
+        setTimeout(() => {
+            if (notificacao.parentNode) notificacao.remove();
+        }, 3000);
+    }
+});
